@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import{ useState, useEffect } from 'react'; // Import React and other necessary components
 import { FaClock, FaCloudSun } from 'react-icons/fa';
 
 const TimeWeather = () => {
@@ -6,18 +6,16 @@ const TimeWeather = () => {
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [weather, setWeather] = useState<string | null>(null);
   const [location, setLocation] = useState<{ city: string; temperature: string; lat?: number; lon?: number }>({
-    city: 'Fetching location...',
+    city: 'Getting location...',
     temperature: 'Loading...',
   });
 
   useEffect(() => {
-    // Update time every second
     const interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
       setDate(new Date().toLocaleDateString());
     }, 1000);
 
-    // Clear interval on component unmount
     return () => clearInterval(interval);
   }, []);
 

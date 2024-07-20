@@ -18,18 +18,18 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Enter the project directory
-        run: cd DevTasks && cd simple-task
-
       - name: Install dependencies
-        run: npm install
-
+        run: |
+          cd DevTasks/simple-task
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd DevTasks/simple-task
+          npm run build
 
       - name: Upload production build
         uses: actions/upload-artifact@v4
         with:
           name: production-build
-          path: build
+          path: DevTasks/simple-task/build
